@@ -30,6 +30,11 @@ class IventarisController extends Controller
     return view('admin', compact('admin', 'last_login', 'iventaris', 'aset'));
 }
 
+ public function dataAset()
+    {
+        
+        return view('data_aset'); 
+    }
 
     /**
      * Show the form for creating a new resource.
