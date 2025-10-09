@@ -40,7 +40,7 @@ class AuthController extends Controller
             ])->withInput();
         }
 
-        // Cek data login sederhana (misalnya user: admin, pass: Admin123)
+        // Cek data login sederhana 
         if ($username === 'syabil' && $password === 'Jabbar11') {
             return redirect('/home')->with('success', 'Selamat datang, ' . $username . '!');
         }
