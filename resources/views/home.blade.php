@@ -88,11 +88,7 @@
 </div>
 
 {{-- Footer --}}
-<footer class="text-center text-muted py-3 mt-auto mx-0" style="background-color: #f8f9fa; border-top: 1px solid #dee2e6; width: 100%;">
-  <div class="container-fluid px-0">
-    <small>© {{ date('Y') }} Sistem Inventaris & Aset</small>
-  </div>
-</footer>
+
 
 @endsection
 
@@ -115,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      plugins: { 
+      plugins: {
         legend: { display: false },
         tooltip: {
           backgroundColor: 'rgba(0, 0, 0, 0.7)',
@@ -126,12 +122,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       },
       scales: {
-        y: { 
-          beginAtZero: true, 
+        y: {
+          beginAtZero: true,
           grid: { color: 'rgba(0, 0, 0, 0.05)' },
           ticks: { font: { size: 12 } }
         },
-        x: { 
+        x: {
           grid: { display: false },
           ticks: { font: { size: 12 } }
         }
@@ -158,8 +154,8 @@ document.addEventListener('DOMContentLoaded', function() {
       plugins: {
         legend: {
           position: 'bottom',
-          labels: { 
-            usePointStyle: true, 
+          labels: {
+            usePointStyle: true,
             padding: 20,
             font: { size: 13 }
           }
@@ -177,157 +173,173 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 {{-- ✅ Floating WhatsApp Button & Popup --}}
-<div id="waButton" class="wa-btn shadow"><i class="bi bi-whatsapp"></i></div>
+{{-- ✅ Floating WhatsApp Button & Popup --}}
+<div id="waButton" class="wa-btn">
+  <div class="wa-pulse"></div>
+  <i class="bi bi-whatsapp"></i>
+</div>
 
 <div id="waPopup" class="wa-popup shadow-lg">
-  <div class="wa-popup-header d-flex align-items-center justify-content-between">
-    <h6 class="mb-0 fw-semibold text-success"><i class="bi bi-whatsapp me-1"></i>Hubungi Kami</h6>
-    <button class="btn-close btn-sm" onclick="toggleWAPopup()"></button>
+  <div class="wa-popup-header d-flex align-items-center">
+    <div class="wa-avatar me-2">
+      <img src="https://i.ibb.co/hdMB7Gv/support-agent.png" alt="Admin">
+    </div>
+    <div>
+      <h6 class="mb-0 fw-bold">Admin Inventaris</h6>
+      <small class="text-success fw-semibold">Online • Siap membantu</small>
+    </div>
+    <button class="btn-close btn-sm ms-auto" onclick="toggleWAPopup()"></button>
   </div>
+
   <div class="wa-popup-body mt-2">
-    <p class="small text-muted mb-2">Silakan pilih cara untuk menghubungi admin:</p>
-    <a href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20ingin%20bertanya%20tentang%20sistem%20inventaris."
-       target="_blank" class="btn btn-success w-100 mb-2">
-       <i class="bi bi-whatsapp me-1"></i> Buka WhatsApp App
+    <p class="small text-muted mb-2">Silakan pilih platform WhatsApp:</p>
+
+    <a href="https://wa.me/6282283628922?text=Halo,%20saya%20ingin%20bertanya%20tentang%20sistem%20inventaris."
+       target="_blank" class="btn wa-btn-main w-100 mb-2">
+       <i class="bi bi-whatsapp me-1"></i> WhatsApp App (Mobile)
     </a>
-    <a href="https://web.whatsapp.com/send?phone=6281234567890&text=Halo%20Admin,%20saya%20ingin%20bertanya."
-       target="_blank" class="btn btn-outline-success w-100">
-       <i class="bi bi-laptop me-1"></i> Buka WhatsApp Web
+
+    <a href="https://web.whatsapp.com/send?phone=6282283628922&text=Halo%20Admin,%20saya%20ingin%20bertanya."
+       target="_blank" class="btn wa-btn-web w-100">
+       <i class="bi bi-laptop me-1"></i> WhatsApp Web (Laptop/PC)
     </a>
   </div>
 </div>
 
 <style>
-  /* Reset margin dan padding untuk full width */
-  body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-  }
-  
-  /* Custom Styles untuk Dashboard */
-  .stat-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: none;
-    border-radius: 10px;
-    height: 100%;
-  }
-  
-  .stat-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-  }
-  
-  .chart-container {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    border: none;
-    height: 100%;
-  }
-  
-  .chart-wrapper {
-    position: relative;
-    height: 250px;
-    width: 100%;
-  }
-  
-  /* WhatsApp Button Styles */
-  .wa-btn {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background-color: #25D366;
-    color: white;
-    font-size: 28px;
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    z-index: 2000;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  }
-  
-  .wa-btn:hover { 
-    background-color: #1ebe5d; 
-    transform: scale(1.08); 
-  }
+/* WhatsApp Button */
+.wa-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 62px;
+  height: 62px;
+  background: linear-gradient(135deg, #25D366, #0fb34a);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 3000;
+  transition: .3s;
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.5);
+}
 
-  .wa-popup {
-    position: fixed;
-    bottom: 90px;
-    right: 30px;
-    width: 280px;
-    background: #fff;
-    border-radius: 15px;
-    padding: 15px;
-    z-index: 1999;
-    display: none;
-    animation: fadeInUp 0.4s ease;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    border: 1px solid #eaeaea;
-  }
-  
-  .wa-popup.show { 
-    display: block; 
-  }
+.wa-btn:hover {
+  transform: scale(1.12) rotate(4deg);
+}
 
-  .wa-popup-header {
-    border-bottom: 1px solid #eaeaea;
-    padding-bottom: 10px;
-  }
+/* Pulse Glow Animation */
+.wa-pulse {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(37, 211, 102, 0.4);
+  border-radius: 50%;
+  animation: pulse 1.8s infinite;
+  z-index: -1;
+}
+@keyframes pulse {
+  0% { transform: scale(0.8); opacity: .8; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
 
-  @keyframes fadeInUp {
-    from { 
-      opacity: 0; 
-      transform: translateY(15px); 
-    }
-    to { 
-      opacity: 1; 
-      transform: translateY(0); 
-    }
-  }
+/* Popup */
+.wa-popup {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 310px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(14px);
+  border-radius: 18px;
+  padding: 15px;
+  display: none;
+  z-index: 3100;
+  animation: fadePop .4s ease;
+  border: 1px solid rgba(255,255,255,0.3);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+.wa-popup.show { display: block; }
 
-  @media (max-width: 768px) {
-    .wa-popup { 
-      right: 15px; 
-      width: calc(100% - 30px); 
-      max-width: 300px;
-    }
-    
-    .stat-card .card-body {
-      padding: 1rem;
-    }
-    
-    .chart-wrapper {
-      height: 200px;
-    }
-    
-    /* Untuk mobile, beri sedikit padding */
-    .container-fluid {
-      padding-left: 5px;
-      padding-right: 5px;
-    }
-  }
+@keyframes fadePop {
+  from { opacity: 0; transform: translateY(25px) scale(.92); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
 
-  /* Untuk desktop, hilangkan semua padding */
-  @media (min-width: 769px) {
-    .container-fluid {
-      padding-left: 0;
-      padding-right: 0;
-    }
-  }
+/* Header */
+.wa-popup-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(200,200,200,0.4);
+}
+
+/* Avatar */
+.wa-avatar {
+  width: 45px;
+  height: 45px;
+  background: #fff;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #25D366;
+  padding: 2px;
+}
+.wa-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+/* Buttons inside popup */
+.wa-btn-main {
+  background: #25D366;
+  color: white;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: .25s;
+}
+.wa-btn-main:hover { background: #1ebe5d; }
+
+.wa-btn-web {
+  border: 2px solid #25D366;
+  color: #25D366;
+  border-radius: 10px;
+  font-weight: 600;
+}
+.wa-btn-web:hover {
+  background: #eaffef;
+}
+
+/* Mobile Fix */
+@media (max-width: 768px) {
+  .wa-popup { width: 90%; right: 5%; }
+}
 </style>
+
+<script>
+const waButton = document.getElementById('waButton');
+const waPopup = document.getElementById('waPopup');
+
+waButton.addEventListener('click', toggleWAPopup);
+
+function toggleWAPopup() {
+  waPopup.classList.toggle('show');
+}
+
+window.addEventListener('click', function(e) {
+  if (!waPopup.contains(e.target) && !waButton.contains(e.target)) {
+    waPopup.classList.remove('show');
+  }
+});
+</script>
+
 
 <script>
   // WhatsApp Popup Functionality
   const waButton = document.getElementById('waButton');
   const waPopup = document.getElementById('waPopup');
-  
+
   waButton.addEventListener('click', toggleWAPopup);
 
   function toggleWAPopup() {

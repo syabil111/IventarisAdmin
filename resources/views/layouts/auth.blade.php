@@ -1,157 +1,425 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <title>Sistem Inventaris & Aset - Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <!-- Bootstrap & Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    
+
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
     @include('layouts.css')
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0e153a;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .auth-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .auth-card {
+            display: flex;
+            width: 90%;
+            max-width: 1100px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: white;
+        }
+
+        .auth-left {
+            background: #0e153a;
+            color: white;
+            flex: 1.2;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            border-right: 1px solid #1e2a78;
+        }
+
+        .auth-right {
+            background: #ffffff;
+            flex: 1;
+            padding: 40px 45px;
+        }
+
+        .logo-container {
+            width: 180px;
+            height: 180px;
+            margin: auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            border: 2px solid #1e2a78;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin: 15px 0 0;
+        }
+
+        .logo-text h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #a5b4fc;
+            margin-top: 5px;
+        }
+
+        .illustration img {
+            width: 95px;
+            height: 95px;
+            filter: brightness(0) invert(1);
+        }
+
+        .form-container {
+            max-width: 380px;
+            margin: auto;
+        }
+
+        .form-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e2e8f0;
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 5px;
+        }
+
+        .toggle-btn {
+            background: none;
+            border: none;
+            color: #64748b;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 12px 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            border-radius: 8px;
+            flex: 1;
+            margin: 0 2px;
+        }
+
+        .toggle-btn.active {
+            color: #0e153a;
+            background: white;
+            box-shadow: 0 2px 8px rgba(14, 21, 58, 0.15);
+        }
+
+        .form-panel {
+            display: none;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .form-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(10px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        .form-title {
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #0e153a;
+            font-size: 1.5rem;
+        }
+
+        .form-subtitle {
+            color: #64748b;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+            color: #374151;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-size: 15px;
+            background: #f9fafb;
+        }
+
+        .form-control:focus {
+            border-color: #0e153a;
+            box-shadow: 0 0 0 3px rgba(14, 21, 58, 0.1);
+            outline: none;
+            background: white;
+        }
+
+        .btn-auth {
+            background: #0e153a;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 14px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(14, 21, 58, 0.3);
+        }
+
+        .btn-auth:hover {
+            background: #1e2a78;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(14, 21, 58, 0.4);
+        }
+
+        .auth-switch {
+            text-align: center;
+            margin-top: 25px;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .auth-switch a {
+            color: #0e153a;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .auth-switch a:hover {
+            color: #1e2a78;
+            text-decoration: underline;
+        }
+
+        .alert {
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: none;
+            font-size: 0.9rem;
+        }
+
+        .alert-danger {
+            background-color: #fef2f2;
+            color: #dc2626;
+            border-left: 4px solid #dc2626;
+        }
+
+        .form-check-input:checked {
+            background-color: #0e153a;
+            border-color: #0e153a;
+        }
+
+        .form-check-label {
+            color: #374151;
+            font-size: 0.9rem;
+        }
+
+        .mini-logo-container {
+            border-radius: 12px;
+            width: 60px;
+            height: 60px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(14, 21, 58, 0.3);
+            margin: auto;
+            border: 2px solid #e5e7eb;
+        }
+
+        .mini-logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Fitur list styling */
+        .feature-item {
+            color: #cbd5e1;
+            margin-bottom: 10px;
+        }
+
+        .feature-item i {
+            color: #60a5fa;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Animated Background -->
-    <div class="bg-animation">
-        <div class="bg-circle circle-1"></div>
-        <div class="bg-circle circle-2"></div>
-        <div class="bg-circle circle-3"></div>
-    </div>
 
     <div class="auth-container">
         <div class="auth-card">
-            <!-- Left Side - Branding -->
+
+            <!-- LEFT -->
             <div class="auth-left">
-                <div class="auth-logo">
-                    <i class="bi bi-building-gear"></i>
-                </div>
-                <div class="auth-content">
-                    <h1>Inventaris & Aset</h1>
-                    <h1> PT. BESMINDO </h1>
-                    <ul class="features-list">
-                        
-                           
-                      
-                    </ul>
+                <div>
+                    <div class="logo-container mb-3">
+                        <img src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?auto=format&fit=crop&w=600&q=80">
+                    </div>
+
+                    <div class="logo-text mb-4">
+                        <h1>Inventory System</h1>
+                        <h2>Inventaris & Aset</h2>
+                    </div>
+
+                    <div class="illustration mb-4">
+                        <div style="background: #1e2a78; border-radius: 15px; padding: 25px; display: inline-block; box-shadow: 0 4px 20px rgba(0,0,0,0.3); border: 1px solid #3730a3;">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3050/3050526.png"
+                                 onerror="this.src='https://cdn-icons-png.flaticon.com/512/4845/4845654.png'">
+                        </div>
+                    </div>
+
+                    <h2 style="font-size: 1.3rem; font-weight: 600; color: white; margin-bottom: 20px;">PT. BESMINDO</h2>
+
+                    <div class="text-start mt-4">
+                        <div class="d-flex align-items-center mb-2 feature-item">
+                            <i class="bi bi-check-circle me-2"></i>
+                            <span>Manajemen Inventaris Terintegrasi</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-2 feature-item">
+                            <i class="bi bi-check-circle me-2"></i>
+                            <span>Tracking Aset Real-time</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-2 feature-item">
+                            <i class="bi bi-check-circle me-2"></i>
+                            <span>Laporan Keuangan Akurat</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Right Side - Forms -->
+            <!-- RIGHT -->
             <div class="auth-right">
                 <div class="form-container">
-                    <!-- Toggle Buttons -->
+                    <div class="text-center mb-4">
+                        <div class="mini-logo-container">
+                            <img src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?auto=format&fit=crop&w=600&q=80">
+                        </div>
+                        <h4 class="mt-2" style="font-weight: 700; color: #0e153a;">PT. BESMINDO</h4>
+                        <p style="color: #64748b; margin: 0;">Sistem Inventaris & Aset</p>
+                    </div>
+
                     <div class="form-toggle">
                         <button class="toggle-btn active" data-form="login">Masuk</button>
                         <button class="toggle-btn" data-form="register">Daftar</button>
                     </div>
 
-                    <!-- Login Form -->
+                    <!-- LOGIN FORM -->
                     <div class="form-panel active" id="login-form">
                         <h2 class="form-title">Masuk ke Akun</h2>
                         <p class="form-subtitle">Selamat datang kembali! Masuk untuk melanjutkan.</p>
 
-                        @if($errors->any())
-                            <div class="alert alert-danger">
-                                @foreach($errors->all() as $error)
-                                    {{ $error }}<br>
-                                @endforeach
-                            </div>
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                            {{ $error }}<br>
+                            @endforeach
+                        </div>
                         @endif
 
-                        @if(session('error'))
-                            <div class="alert alert-danger">{{ session('error') }}</div>
+                        @if (session('error'))
+                        <div class="alert alert-danger">{{ session('error') }}</div>
                         @endif
 
                         <form method="POST" action="{{ route('login.post') }}">
                             @csrf
-                            
                             <div class="form-group">
                                 <label for="login_email" class="form-label">Email</label>
-                                <input type="email" name="email" id="login_email" 
-                                       value="{{ old('email') }}" 
-                                       required 
-                                       class="form-control"
-                                       placeholder="Masukkan email Anda">
+                                <input type="email" name="email" id="login_email" value="{{ old('email') }}" required
+                                    class="form-control" placeholder="Masukkan email Anda">
                             </div>
-
                             <div class="form-group">
                                 <label for="login_password" class="form-label">Password</label>
-                                <input type="password" name="password" id="login_password" 
-                                       required 
-                                       class="form-control"
-                                       placeholder="Masukkan password Anda">
+                                <input type="password" name="password" id="login_password" required class="form-control"
+                                    placeholder="Masukkan password Anda">
                             </div>
-
                             <div class="form-group">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember">
-                                    <label class="form-check-label" for="remember">
-                                        Ingat saya
-                                    </label>
+                                    <label class="form-check-label" for="remember">Ingat saya</label>
                                 </div>
                             </div>
-
                             <button type="submit" class="btn-auth">
                                 <i class="bi bi-box-arrow-in-right me-2"></i>Masuk
                             </button>
                         </form>
-
                         <div class="auth-switch">
                             Belum punya akun? <a href="#" class="switch-to-register">Daftar Sekarang</a>
                         </div>
                     </div>
 
-                    <!-- Register Form -->
+                    <!-- REGISTER FORM -->
                     <div class="form-panel" id="register-form">
                         <h2 class="form-title">Buat Akun Baru</h2>
                         <p class="form-subtitle">Daftar untuk mulai mengelola inventaris Anda.</p>
 
-                        @if($errors->any())
-                            <div class="alert alert-danger">
-                                @foreach($errors->all() as $error)
-                                    {{ $error }}<br>
-                                @endforeach
-                            </div>
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                            {{ $error }}<br>
+                            @endforeach
+                        </div>
                         @endif
 
                         <form method="POST" action="{{ route('register.post') }}">
                             @csrf
                             <div class="form-group">
                                 <label class="form-label">Nama Lengkap</label>
-                                <input type="text" name="name" class="form-control" 
-                                       placeholder="Masukkan nama lengkap" 
-                                       required 
-                                       value="{{ old('name') }}">
+                                <input type="text" name="name" class="form-control" placeholder="Masukkan nama lengkap" required
+                                    value="{{ old('name') }}">
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Email</label>
-                                <input type="email" name="email" class="form-control" 
-                                       placeholder="Masukkan email Anda" 
-                                       required 
-                                       value="{{ old('email') }}">
+                                <input type="email" name="email" class="form-control" placeholder="Masukkan email Anda" required
+                                    value="{{ old('email') }}">
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Password</label>
-                                <input type="password" name="password" class="form-control" 
-                                       placeholder="Buat password (minimal 8 karakter)" 
-                                       required>
+                                <input type="password" name="password" class="form-control"
+                                    placeholder="Buat password (minimal 8 karakter)" required>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Konfirmasi Password</label>
-                                <input type="password" name="password_confirmation" class="form-control" 
-                                       placeholder="Ulangi password" 
-                                       required>
+                                <input type="password" name="password_confirmation" class="form-control"
+                                    placeholder="Ulangi password" required>
                             </div>
                             <button type="submit" class="btn-auth btn-register">
                                 <i class="bi bi-person-plus me-2"></i>Daftar
                             </button>
                         </form>
-
                         <div class="auth-switch">
                             Sudah punya akun? <a href="#" class="switch-to-login">Masuk Sekarang</a>
                         </div>
@@ -172,15 +440,15 @@
             toggleBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
                     const targetForm = this.getAttribute('data-form');
-                    
+
                     // Update active toggle button
                     toggleBtns.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
-                    
+
                     // Show target form
                     formPanels.forEach(panel => {
                         panel.classList.remove('active');
-                        if (panel.id === `${targetForm}-form`) {
+                        if (panel.id === targetForm + '-form') {
                             setTimeout(() => panel.classList.add('active'), 50);
                         }
                     });
@@ -188,16 +456,20 @@
             });
 
             // Switch from login to register
-            switchToRegister.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector('.toggle-btn[data-form="register"]').click();
-            });
+            if (switchToRegister) {
+                switchToRegister.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector('.toggle-btn[data-form="register"]').click();
+                });
+            }
 
             // Switch from register to login
-            switchToLogin.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector('.toggle-btn[data-form="login"]').click();
-            });
+            if (switchToLogin) {
+                switchToLogin.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector('.toggle-btn[data-form="login"]').click();
+                });
+            }
 
             // Add input animations
             const inputs = document.querySelectorAll('.form-control');
@@ -205,22 +477,12 @@
                 input.addEventListener('focus', function() {
                     this.style.transform = 'scale(1.02)';
                 });
-                
                 input.addEventListener('blur', function() {
                     this.style.transform = 'scale(1)';
                 });
             });
-
-            // Debug form submission
-            const loginForm = document.querySelector('#login-form form');
-            if (loginForm) {
-                loginForm.addEventListener('submit', function(e) {
-                    console.log('Login form submitted');
-                    console.log('Email:', document.querySelector('#login_email').value);
-                    console.log('Form action:', this.action);
-                });
-            }
         });
     </script>
+
 </body>
 </html>
