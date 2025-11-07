@@ -15,7 +15,7 @@ class KategoriController extends Controller
         // Ambil data dari database
         $kategoris = KategoriAset::orderBy('created_at', 'desc')->get();
 
-        return view('kategori.index', [
+        return view('pages.kategori.index', [
             'title' => 'Manajemen Kategori',
             'kategoris' => $kategoris
         ]);
@@ -26,7 +26,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        return view('kategori.create', [
+        return view('pages.kategori.create', [
             'title' => 'Tambah Kategori Baru'
         ]);
     }
@@ -55,7 +55,6 @@ class KategoriController extends Controller
 
             return redirect()->route('kategori.index')
                 ->with('success', 'Kategori berhasil ditambahkan!');
-
         } catch (\Exception $e) {
             return redirect()->back()
                 ->with('error', 'Gagal menambahkan kategori: ' . $e->getMessage())
@@ -69,7 +68,7 @@ class KategoriController extends Controller
     public function show(string $id)
     {
         $kategori = KategoriAset::findOrFail($id);
-        
+
         return view('kategori.show', [
             'title' => 'Detail Kategori',
             'kategori' => $kategori
@@ -83,7 +82,7 @@ class KategoriController extends Controller
     {
         $kategori = KategoriAset::findOrFail($id);
 
-        return view('kategori.edit', [
+        return view('pages.kategori.edit', [
             'title' => 'Edit Kategori',
             'kategori' => $kategori
         ]);
@@ -92,7 +91,7 @@ class KategoriController extends Controller
     /**
      * Update the specified resource in storage.
      */
-     public function update(Request $request, $id)
+    public function update(Request $request, $id)
     {
         // Validasi yang benar
         $validated = $request->validate([
@@ -119,16 +118,15 @@ class KategoriController extends Controller
      */
     public function destroy(string $id)
     {
-        try {
-            $kategori = KategoriAset::findOrFail($id);
-            $kategori->delete();
+        // Cari data kategori berdasarkan ID
+        $kategori = KategoriAset::findOrFail($id);
 
-            return redirect()->route('kategori.index')
-                ->with('success', 'Kategori berhasil dihapus!');
+        // Hapus data kategori
+        $kategori->delete();
 
-        } catch (\Exception $e) {
-            return redirect()->back()
-                ->with('error', 'Gagal menghapus kategori: ' . $e->getMessage());
-        }
+        // Redirect ke halaman index dengan pesan sukses
+        return redirect()
+            ->route('kategori.index')
+            ->with('success', 'Kategori berhasil dihapus!');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\PemeliharaanAset;
 
 class HomeController extends Controller
 {
@@ -20,18 +21,12 @@ class HomeController extends Controller
             if (class_exists('App\Models\KategoriAset')) {
                 $data['totalKategori'] = \App\Models\KategoriAset::count();
             }
-            
-            if (class_exists('App\Models\Aset')) {
-                $data['totalAset'] = \App\Models\Aset::count();
-            }
-            
-            if (class_exists('App\Models\PemeliharaanAset')) {
-                $data['totalPemeliharaan'] = \App\Models\PemeliharaanAset::count();
-            }
+
+
         } catch (\Exception $e) {
             // Tetap lanjut dengan nilai default
         }
 
-        return view('home', $data);
+        return view('pages.home', $data);
     }
 }

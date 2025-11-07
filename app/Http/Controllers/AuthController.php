@@ -13,12 +13,12 @@ class AuthController extends Controller
 {
     public function showLogin()
     {
-        return view('layouts.auth');
+        return view('pages.auth.auth');
     }
 
     public function showRegister()
     {
-        return view('layouts.auth');
+        return view('pages.auth.auth');
     }
 
     public function login(Request $request)
@@ -36,18 +36,18 @@ class AuthController extends Controller
         if (Auth::attempt($credentials, $request->remember)) {
             $request->session()->regenerate();
             Log::info('Login successful for: ' . $request->email);
-            
+
             return redirect()->route('home')->with('success', 'Login berhasil!');
         }
 
         // CARA 2: Manual Hash::check() (jika ingin kontrol lebih detail)
         // $user = User::where('email', $request->email)->first();
-        
+
         // if ($user && Hash::check($request->password, $user->password)) {
         //     Auth::login($user, $request->remember);
         //     $request->session()->regenerate();
         //     Log::info('Login successful for: ' . $request->email);
-            
+
         //     return redirect()->route('home')->with('success', 'Login berhasil!');
         // }
 
@@ -130,9 +130,7 @@ class AuthController extends Controller
         }
 
         // Update password baru
-        $user->update([
-            'password' => Hash::make($request->new_password)
-        ]);
+
 
         return back()->with('success', 'Password berhasil diubah!');
     }
