@@ -17,7 +17,7 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0e153a;
+            background-color: #1b3c53;
             margin: 0;
             padding: 0;
             min-height: 100vh;
@@ -42,7 +42,7 @@
         }
 
         .auth-left {
-            background: #0e153a;
+            background: #1b3c53;
             color: white;
             flex: 1.2;
             padding: 50px 40px;
@@ -50,11 +50,11 @@
             flex-direction: column;
             justify-content: center;
             text-align: center;
-            border-right: 1px solid #1e2a78;
+            border-right: 1px solid #456882;
         }
 
         .auth-right {
-            background: #ffffff;
+            background: #f9f3ef;
             flex: 1;
             padding: 40px 45px;
         }
@@ -66,7 +66,7 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-            border: 2px solid #1e2a78;
+            border: 2px solid #456882;
         }
 
         .logo-container img {
@@ -85,7 +85,7 @@
         .logo-text h2 {
             font-size: 1.1rem;
             font-weight: 600;
-            color: #a5b4fc;
+            color: #d2c1b6;
             margin-top: 5px;
         }
 
@@ -105,7 +105,7 @@
             justify-content: center;
             margin-bottom: 30px;
             border-bottom: 2px solid #e2e8f0;
-            background: #f8fafc;
+            background: #f9f3ef;
             border-radius: 10px;
             padding: 5px;
         }
@@ -126,9 +126,9 @@
         }
 
         .toggle-btn.active {
-            color: #0e153a;
+            color: #1b3c53;
             background: white;
-            box-shadow: 0 2px 8px rgba(14, 21, 58, 0.15);
+            box-shadow: 0 2px 8px rgba(27, 60, 83, 0.15);
         }
 
         .form-panel {
@@ -148,7 +148,7 @@
         .form-title {
             font-weight: 700;
             margin-bottom: 10px;
-            color: #0e153a;
+            color: #1b3c53;
             font-size: 1.5rem;
         }
 
@@ -173,22 +173,22 @@
         .form-control {
             width: 100%;
             padding: 12px 15px;
-            border: 2px solid #e5e7eb;
+            border: 2px solid #d2c1b6;
             border-radius: 8px;
             transition: all 0.3s;
             font-size: 15px;
-            background: #f9fafb;
+            background: #f9f3ef;
         }
 
         .form-control:focus {
-            border-color: #0e153a;
-            box-shadow: 0 0 0 3px rgba(14, 21, 58, 0.1);
+            border-color: #456882;
+            box-shadow: 0 0 0 3px rgba(69, 104, 130, 0.1);
             outline: none;
             background: white;
         }
 
         .btn-auth {
-            background: #0e153a;
+            background: #456882;
             color: white;
             border: none;
             width: 100%;
@@ -198,13 +198,13 @@
             margin-top: 10px;
             transition: all 0.3s ease;
             font-size: 1rem;
-            box-shadow: 0 4px 15px rgba(14, 21, 58, 0.3);
+            box-shadow: 0 4px 15px rgba(69, 104, 130, 0.3);
         }
 
         .btn-auth:hover {
-            background: #1e2a78;
+            background: #1b3c53;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(14, 21, 58, 0.4);
+            box-shadow: 0 6px 20px rgba(27, 60, 83, 0.4);
         }
 
         .auth-switch {
@@ -215,14 +215,14 @@
         }
 
         .auth-switch a {
-            color: #0e153a;
+            color: #456882;
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s ease;
         }
 
         .auth-switch a:hover {
-            color: #1e2a78;
+            color: #1b3c53;
             text-decoration: underline;
         }
 
@@ -241,8 +241,8 @@
         }
 
         .form-check-input:checked {
-            background-color: #0e153a;
-            border-color: #0e153a;
+            background-color: #456882;
+            border-color: #456882;
         }
 
         .form-check-label {
@@ -255,9 +255,9 @@
             width: 60px;
             height: 60px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(14, 21, 58, 0.3);
+            box-shadow: 0 4px 15px rgba(27, 60, 83, 0.3);
             margin: auto;
-            border: 2px solid #e5e7eb;
+            border: 2px solid #d2c1b6;
         }
 
         .mini-logo-container img {
@@ -268,12 +268,12 @@
 
         /* Fitur list styling */
         .feature-item {
-            color: #cbd5e1;
+            color: #d2c1b6;
             margin-bottom: 10px;
         }
 
         .feature-item i {
-            color: #60a5fa;
+            color: #456882;
         }
     </style>
 </head>
@@ -296,7 +296,7 @@
                     </div>
 
                     <div class="illustration mb-4">
-                        <div style="background: #1e2a78; border-radius: 15px; padding: 25px; display: inline-block; box-shadow: 0 4px 20px rgba(0,0,0,0.3); border: 1px solid #3730a3;">
+                        <div style="background: #456882; border-radius: 15px; padding: 25px; display: inline-block; box-shadow: 0 4px 20px rgba(0,0,0,0.3); border: 1px solid #1b3c53;">
                             <img src="https://cdn-icons-png.flaticon.com/512/3050/3050526.png"
                                  onerror="this.src='https://cdn-icons-png.flaticon.com/512/4845/4845654.png'">
                         </div>
@@ -328,7 +328,7 @@
                         <div class="mini-logo-container">
                             <img src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?auto=format&fit=crop&w=600&q=80">
                         </div>
-                        <h4 class="mt-2" style="font-weight: 700; color: #0e153a;">PT. BESMINDO</h4>
+                        <h4 class="mt-2" style="font-weight: 700; color: #1b3c53;">PT. BESMINDO</h4>
                         <p style="color: #64748b; margin: 0;">Sistem Inventaris & Aset</p>
                     </div>
 

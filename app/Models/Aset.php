@@ -9,21 +9,36 @@ class Aset extends Model
 {
     use HasFactory;
 
-    protected $table = 'asets';
-    protected $primaryKey = 'id';
-    
+    protected $table = 'aset';
+    protected $primaryKey = 'aset_id';
+
     protected $fillable = [
-        'nama_aset',
-        'kode_aset',
         'kategori_id',
-        'lokasi_id',
-        'deskripsi',
-        'status'
+        'kode_aset',
+        'nama_aset',
+        'tgl_perolehan',
+        'nilai_perolehan',
+        'kondisi',
+        'foto_aset'
     ];
 
-    // Relasi ke Kategori
+    protected $casts = [
+        'tgl_perolehan' => 'date',
+        'nilai_perolehan' => 'decimal:2'
+    ];
+
+    // Relationship dengan Kategori
     public function kategori()
     {
         return $this->belongsTo(Kategori::class, 'kategori_id');
+    }
+
+    // Accessor untuk URL foto
+    public function getFotoUrlAttribute()
+    {
+        if ($this->foto_aset) {
+            return Storage::url('public/aset/' . $this->foto_aset);
+        }
+        return null;
     }
 }

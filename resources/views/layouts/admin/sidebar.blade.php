@@ -14,7 +14,7 @@
       <a href="{{ route('kategori.index') }}" class="nav-link {{ request()->is('kategori*') ? 'active' : '' }}">
         <i class="bi bi-tag"></i> Kategori Aset
       </a>
-      <a href="#" class="nav-link {{ request()->is('aset*') ? 'active' : '' }}">
+      <a href="{{ route ('aset.index') }}" class="nav-link {{ request()->is('aset*') ? 'active' : '' }}">
         <i class="bi bi-box"></i> Data Aset
       </a>
       <a href="#" class="nav-link {{ request()->is('lokasi*') ? 'active' : '' }}">

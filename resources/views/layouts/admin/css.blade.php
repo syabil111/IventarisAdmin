@@ -1,3 +1,33 @@
+ <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<!-- DataTables -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+<!-- Custom CSS -->
+<style>
+    .sidebar-menu > li > a.active {
+        background-color: #007bff;
+        color: white !important;
+    }
+    .table-actions {
+        white-space: nowrap;
+    }
+    .table-actions .btn {
+        margin: 0 2px;
+    }
+    .img-thumbnail {
+        object-fit: cover;
+    }
+    .main-sidebar {
+        background-color: #343a40;
+    }
+    .brand-link {
+        border-bottom: 1px solid #4b545c;
+    }
+</style>
+ 
+ 
  <link type="text/css" href="{{ asset('assets-admin/css/volt.css') }}" rel="stylesheet">
  <style>
   body {
